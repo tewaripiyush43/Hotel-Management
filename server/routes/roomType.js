@@ -5,7 +5,7 @@ const {
   createRoomType,
   updateRoomType,
   deleteRoomType,
-} = require("../controllers/createRoomType");
+} = require("../controllers/RoomType");
 
 router.post("/create", createRoomType);
 router.put("/update", updateRoomType);
