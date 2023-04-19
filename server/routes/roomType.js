@@ -6,7 +6,7 @@ const {
   updateRoomType,
   deleteRoomType,
   findRoomType,
-} = require("../controllers/roomType");
+} = require("../controllers/roomtype");
 
 router.get("/find", findRoomType);
 router.post("/create", createRoomType);

@@ -1,5 +1,5 @@
 const booking = require("./booking");
 const room = require("./room");
-const roomType = require("./roomType");
+const roomtype = require("./roomtype");
 
-module.exports = { booking, room, roomType };
+module.exports = { booking, room, roomtype };
