@@ -1,4 +1,4 @@
-const RoomType = require("../models/roomType");
+const RoomType = require("../models/roomtype");
 
 module.exports.findRoomType = async (req, res) => {
   const roomTypes = await RoomType.find().catch((err) => {

@@ -7,7 +7,7 @@ const cors = require("cors");
 
 const { connectMongoDB } = require("./connection");
 
-const roomTypeRouter = require("./routes/roomType");
+const roomTypeRouter = require("./routes/roomtype");
 const roomRouter = require("./routes/room");
 const bookingRouter = require("./routes/booking");
 

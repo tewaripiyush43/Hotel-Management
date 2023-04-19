@@ -1,5 +1,5 @@
 const Room = require("../models/room");
-const RoomType = require("../models/roomType");
+const RoomType = require("../models/roomtype");
 
 module.exports.createRoom = async (req, res) => {
   const { room_type, room_number } = req.body;

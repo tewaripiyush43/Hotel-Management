@@ -1,5 +1,5 @@
 const Booking = require("../models/booking");
-const RoomType = require("../models/roomType");
+const RoomType = require("../models/roomtype");
 const Room = require("../models/room");
 
 module.exports.getAllBookings = async (req, res) => {
