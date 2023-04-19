@@ -2,7 +2,7 @@ const Booking = require("../models/booking");
 const RoomType = require("../models/roomType");
 const Room = require("../models/room");
 
-exports.getAllBookings = async (req, res) => {
+module.exports.getAllBookings = async (req, res) => {
   const bookings = await Booking.find()
     .populate("room_id", "room_number")
     .populate("room_type", "room_type price_per_hour")
@@ -14,7 +14,7 @@ exports.getAllBookings = async (req, res) => {
   res.json(bookings);
 };
 
-exports.createBooking = async (req, res) => {
+module.exports.createBooking = async (req, res) => {
   const { user_email, room_type, start_time, end_time, total_price } = req.body;
   const room_type_info = await RoomType.find({ room_type: room_type })
     .then((res) => {
@@ -102,8 +102,8 @@ exports.createBooking = async (req, res) => {
   return res.json({ success: true, newBooking });
 };
 
-exports.filterBookings = async (req, res) => {
-  console.log(req.query);
+module.exports.filterBookings = async (req, res) => {
+  // console.log(req.query);
   const { room_type, start_time, end_time, room_number } = req.query;
 
   if (start_time !== "") {
@@ -172,7 +172,7 @@ exports.filterBookings = async (req, res) => {
   // return res.end();
 };
 
-exports.deleteBooking = async (req, res) => {
+module.exports.deleteBooking = async (req, res) => {
   await Booking.deleteOne({ _id: req.params.bookingId })
     .then(() => console.log("Booking deleted"))
     .catch((err) => {
@@ -183,7 +183,7 @@ exports.deleteBooking = async (req, res) => {
   res.end();
 };
 
-exports.updateBooking = async (req, res) => {
+module.exports.updateBooking = async (req, res) => {
   const {
     bookingId,
     user_email,

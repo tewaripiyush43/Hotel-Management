@@ -1,7 +1,7 @@
 const Room = require("../models/room");
 const RoomType = require("../models/roomType");
 
-exports.createRoom = async (req, res) => {
+module.exports.createRoom = async (req, res) => {
   const { room_type, room_number } = req.body;
   //   console.log("Room created called");
 
@@ -31,5 +31,5 @@ exports.createRoom = async (req, res) => {
       return err;
     });
 
-  res.send("done hai bhai");
+  return res.send(newRoom);
 };

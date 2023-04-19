@@ -13,7 +13,7 @@ const ViewBookings = () => {
     roomNumber: "",
   });
   const getBookings = async () => {
-    console.log("getBookings called");
+    // console.log("getBookings called");
     setBookings([]);
     await axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/booking/getBookings`)

@@ -1,6 +1,6 @@
 const RoomType = require("../models/roomType");
 
-exports.findRoomType = async (req, res) => {
+module.exports.findRoomType = async (req, res) => {
   const roomTypes = await RoomType.find().catch((err) => {
     console.log(err);
     return err;
@@ -9,7 +9,7 @@ exports.findRoomType = async (req, res) => {
   res.json(roomTypes);
 };
 
-exports.createRoomType = async (req, res) => {
+module.exports.createRoomType = async (req, res) => {
   const { room_type, price_per_hour, total_rooms } = req.body;
 
   const newRoomType = new RoomType({
@@ -31,7 +31,7 @@ exports.createRoomType = async (req, res) => {
   return res.send({ room: newRoomType });
 };
 
-exports.updateRoomType = async (req, res) => {
+module.exports.updateRoomType = async (req, res) => {
   const { room_type, price_per_hour, total_rooms } = req.body;
   const filter = { room_type: room_type };
   const update = { $set: { ...req.body } };
@@ -44,10 +44,10 @@ exports.updateRoomType = async (req, res) => {
       return err;
     });
 
-  return res.send({ message: "console dekh" });
+  return res.send({ message: "RoomType updated successfully " });
 };
 
-exports.deleteRoomType = async (req, res) => {
+module.exports.deleteRoomType = async (req, res) => {
   const { room_type } = req.body;
   const filter = { room_type: room_type };
 
@@ -59,5 +59,5 @@ exports.deleteRoomType = async (req, res) => {
       return err;
     });
 
-  return res.send({ message: "console dekh" });
+  return res.send({ message: "RoomType Deleted Successfully" });
 };
