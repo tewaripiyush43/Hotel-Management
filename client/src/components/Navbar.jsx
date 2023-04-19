@@ -19,9 +19,6 @@ const Navbar = () => {
           <h3 onClick={() => handleClick("")} className="link">
             Create Booking
           </h3>
-          <h3 onClick={() => handleClick("updatebookings")} className="link">
-            Update Bookings
-          </h3>
           <h3 onClick={() => handleClick("viewbookings")} className="link">
             View Bookings
           </h3>

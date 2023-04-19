@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import PopUp from "./PopUp";
+
 const BookingForm = (RoomType) => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -8,6 +10,9 @@ const BookingForm = (RoomType) => {
     endTime: "",
     totalPrice: 0,
   });
+
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState("");
 
   useEffect(() => {
     // console.log(hours);
@@ -36,15 +41,15 @@ const BookingForm = (RoomType) => {
   };
 
   const bookRoom = async () => {
-    await axios
-      .post("http://localhost:9000/booking/create", {
+    return await axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/booking/create`, {
         user_email: inputs.email,
         room_type: RoomType.roomInfo.room_type,
         start_time: inputs.startTime,
         end_time: inputs.endTime,
         total_price: inputs.totalPrice,
       })
-      .then(() => {})
+      .then((response) => response.data)
       .catch((err) => {
         console.log(err);
         return err;
@@ -54,11 +59,20 @@ const BookingForm = (RoomType) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    bookRoom();
+    bookRoom().then((data) => {
+      if (!data.success) {
+        setText("Booking Failed. Please select another slot!");
+        setOpen(true);
+      } else {
+        setText("Booking Successful!");
+        setOpen(true);
+      }
+    });
   };
 
   return (
     <div className="form-container">
+      <PopUp open={open} setOpen={setOpen} text={text} />
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-heading-container">
           <p className="form-heading">{RoomType.roomInfo.room_type} Rooms</p>

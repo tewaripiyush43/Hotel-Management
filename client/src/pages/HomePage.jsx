@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const getRoomTypes = async (req, res) => {
       await axios
-        .get("http://localhost:9000/roomtype/find")
+        .get(`${import.meta.env.VITE_BACKEND_URL}/roomtype/find`)
         .then((res) => {
           setRoomTypes(res.data);
         })

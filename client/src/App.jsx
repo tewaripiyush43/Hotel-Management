@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import UpdateBookings from "./pages/UpdateBookingsPage";
 import ViewBookings from "./pages/ViewBookingsPage";
 
+console.log(import.meta.env);
+
 function App() {
   return (
     <div className="App">

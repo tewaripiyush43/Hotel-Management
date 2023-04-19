@@ -13,8 +13,10 @@ const ViewBookings = () => {
     roomNumber: "",
   });
   const getBookings = async () => {
+    console.log("getBookings called");
+    setBookings([]);
     await axios
-      .get("http://localhost:9000/booking/getBookings")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/booking/getBookings`)
       .then((res) => {
         setBookings(res.data);
         console.log(res.data);
@@ -38,7 +40,11 @@ const ViewBookings = () => {
     } else {
       await axios
         .get(
-          `http://localhost:9000/booking/filterBookings?start_time=${inputs.startTime}&end_time=${inputs.endTime}&room_type=${inputs.roomType}&room_number=${inputs.roomNumber}`
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/booking/filterBookings?start_time=${inputs.startTime}&end_time=${
+            inputs.endTime
+          }&room_type=${inputs.roomType}&room_number=${inputs.roomNumber}`
         )
         .then((res) => {
           console.log(res.data);

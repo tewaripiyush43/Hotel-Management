@@ -57,7 +57,7 @@ exports.createBooking = async (req, res) => {
 
   const rooms = new Set();
   let unavailableRooms = overlappingSlots.map((booking) => booking.room_id);
-  overlappingSlots.map((booking) => rooms.add(booking.room_id));
+  overlappingSlots.map((booking) => rooms.add(booking.room_id.toString()));
 
   // console.log("un:", unavailableRooms);
 
@@ -73,6 +73,7 @@ exports.createBooking = async (req, res) => {
 
   if (rooms.size === room_type_info.total_rooms) {
     return res.json({
+      success: false,
       message: "No room available in this slot.",
       overlappingSlots,
     });
@@ -98,7 +99,7 @@ exports.createBooking = async (req, res) => {
     });
   // console.log(availableRooms);
 
-  return res.json(newBooking);
+  return res.json({ success: true, newBooking });
 };
 
 exports.filterBookings = async (req, res) => {
@@ -232,8 +233,8 @@ exports.updateBooking = async (req, res) => {
   });
 
   const rooms = new Set();
-  let unavailableRooms = overlappingSlots.map((booking) => booking.room_id);
-  overlappingSlots.map((booking) => rooms.add(booking.room_id));
+  const unavailableRooms = overlappingSlots.map((booking) => booking.room_id);
+  overlappingSlots.map((booking) => rooms.add(booking.room_id.toString()));
 
   if (rooms.size === room_type_info.total_rooms) {
     return res.status(500).json({

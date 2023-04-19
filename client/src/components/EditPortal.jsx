@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
-const EditPortal = ({ isOpen, setOpen, refreshData, bookingInfo }) => {
+const EditPortal = ({
+  isOpen,
+  setOpen,
+  refreshData,
+  bookingInfo,
+  setText,
+  setPopupOpen,
+}) => {
   let {
     _id,
     room_id,
@@ -13,6 +20,9 @@ const EditPortal = ({ isOpen, setOpen, refreshData, bookingInfo }) => {
     total_price,
   } = bookingInfo;
   if (!isOpen) return null;
+
+  start_time = new Date(new Date(start_time).getTime() + 5.5 * 60 * 60 * 1000);
+  end_time = new Date(new Date(end_time).getTime() + 5.5 * 60 * 60 * 1000);
 
   const [inputs, setInputs] = useState({
     email: user_email,
@@ -67,7 +77,7 @@ const EditPortal = ({ isOpen, setOpen, refreshData, bookingInfo }) => {
   const updateBooking = async () => {
     setOpen(false);
     await axios
-      .put("http://localhost:9000/booking/update", {
+      .put(`${import.meta.env.VITE_BACKEND_URL}/booking/update`, {
         bookingId: bookingInfo._id,
         user_email: inputs.email,
         room_type: room_type.room_type,
@@ -76,11 +86,15 @@ const EditPortal = ({ isOpen, setOpen, refreshData, bookingInfo }) => {
         total_price: inputs.totalPrice,
       })
       .then(() => {
-        // console.log("Update Booking");
+        console.log("Update Booking");
+        alert("Update successful!");
+        // setPopupOpen(true);
         refreshData();
       })
       .catch((err) => {
         console.log(err);
+        alert("Update failed! No room available during this time.");
+        // setPopupOpen(true);
         return err;
       });
   };

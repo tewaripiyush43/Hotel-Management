@@ -4,6 +4,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeletePortal from "./DeletePortal";
 import EditPortal from "./EditPortal";
 
+import PopUp from "./PopUp";
+
 const BookingCard = ({ bookingInfo, refreshData }) => {
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const [isEditClicked, setIsEditClicked] = useState(false);
@@ -18,8 +20,11 @@ const BookingCard = ({ bookingInfo, refreshData }) => {
   } = bookingInfo;
 
   // console.log(start_time);
-  start_time = new Date(start_time).toLocaleString();
-  end_time = new Date(end_time).toLocaleString();
+  const start_time_string = new Date(start_time).toLocaleString(),
+    end_time_string = new Date(end_time).toLocaleString();
+
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [text, setText] = useState("");
 
   return (
     <div className="card">
@@ -35,7 +40,10 @@ const BookingCard = ({ bookingInfo, refreshData }) => {
         refreshData={refreshData}
         isOpen={isEditClicked}
         setOpen={() => setIsEditClicked(false)}
+        setPopupOpen={setPopupOpen}
+        setText={setText}
       />
+      <PopUp open={popupOpen} setOpen={setPopupOpen} text={text} />
       <div className="card-body">
         <h5 className="card-title">{room_id.room_number} Room</h5>
         <div className="form-group">
@@ -44,11 +52,11 @@ const BookingCard = ({ bookingInfo, refreshData }) => {
         </div>
         <div className="form-group">
           <label htmlFor="startTime">From</label>
-          <p>{start_time}</p>
+          <p>{start_time_string}</p>
         </div>
         <div className="form-group">
           <label htmlFor="endTime">To</label>
-          <p>{end_time}</p>
+          <p>{end_time_string}</p>
         </div>
         <div className="form-group">
           <label htmlFor="TotalPrice">Total Price</label>

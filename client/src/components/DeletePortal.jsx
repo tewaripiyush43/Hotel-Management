@@ -30,7 +30,7 @@ const DeletePortal = ({
   const sendDeleteRequest = async (req, res) => {
     setOpen(false);
     await axios
-      .delete(`http://localhost:9000/booking/delete/${bookingId}`)
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/booking/delete/${bookingId}`)
       .then(() => {
         // console.log("Delete request sent");
         refreshData();
