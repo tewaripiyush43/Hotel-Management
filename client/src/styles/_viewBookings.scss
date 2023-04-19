@@ -1,0 +1,62 @@
+.view-booking-container {
+  position: absolute;
+  // top: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  gap: 2.5rem;
+  justify-items: center;
+  padding: 1.5rem;
+  width: 100%;
+  margin-block: 60px;
+
+  .filter-container {
+    width: 100vw;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+    gap: 10px;
+
+    .filter-fields {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+
+      .input-label {
+        margin-left: 10px;
+      }
+
+      .room-number-input {
+        width: 5%;
+      }
+
+      .filter-submit-btn {
+        cursor: pointer;
+        padding: 2px 7px;
+        // font-size: 0.9rem;
+      }
+    }
+
+    .filter-icon-container {
+      display: flex;
+      align-items: center;
+      padding: 4px;
+
+      &:hover {
+        box-shadow: 0px 0px 5px 0px #000;
+      }
+
+      p {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .filter-icon {
+        margin: 0;
+      }
+    }
+  }
+}

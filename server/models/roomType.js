@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 const roomTypeSchema = new mongoose.Schema({
-  type: {
+  room_type: {
     type: String,
     required: true,
-    unique: true,
   },
   price_per_hour: {
     type: Number,

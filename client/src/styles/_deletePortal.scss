@@ -1,0 +1,71 @@
+.delete-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.overlay-style {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.delete-component {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.delete-component-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.delete-component-message {
+  margin-bottom: 2rem;
+}
+
+.cancel-booking-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.cancel-btn,
+.confirm-btn {
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.cancel-btn:hover,
+.confirm-btn:hover {
+  opacity: 0.8;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: black;
+}
+
+.confirm-btn {
+  background-color: #f44336;
+  color: white;
+}

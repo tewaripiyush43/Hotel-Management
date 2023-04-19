@@ -1,0 +1,31 @@
+:root {
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  // font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
+
+  overflow-x: hidden;
+  user-select: none;
+}
+
+.forms {
+  display: flex;
+}
+
+@import "_home.scss";
+@import "_form.scss";
+@import "_navbar.scss";
+@import "_bookingCard.scss";
+@import "_viewBookings.scss";
+@import "_deletePortal";
+@import "_editPortal.scss";

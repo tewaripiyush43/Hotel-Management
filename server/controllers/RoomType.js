@@ -1,11 +1,19 @@
 const RoomType = require("../models/roomType");
 
+exports.findRoomType = async (req, res) => {
+  const roomTypes = await RoomType.find().catch((err) => {
+    console.log(err);
+    return err;
+  });
+
+  res.json(roomTypes);
+};
+
 exports.createRoomType = async (req, res) => {
-  //   console.log("hogi request sexy");
-  const { type, price_per_hour, total_rooms } = req.body;
+  const { room_type, price_per_hour, total_rooms } = req.body;
 
   const newRoomType = new RoomType({
-    type,
+    room_type,
     price_per_hour,
     total_rooms,
   });
@@ -16,6 +24,7 @@ exports.createRoomType = async (req, res) => {
       console.log("RoomType Created");
     })
     .catch((err) => {
+      console.log(err);
       return err;
     });
 
@@ -23,10 +32,8 @@ exports.createRoomType = async (req, res) => {
 };
 
 exports.updateRoomType = async (req, res) => {
-  //   console.log("hogya update ");
-
-  const { type, price_per_hour, total_rooms } = req.body;
-  const filter = { type: type };
+  const { room_type, price_per_hour, total_rooms } = req.body;
+  const filter = { room_type: room_type };
   const update = { $set: { ...req.body } };
 
   RoomType.updateOne(filter, update)
@@ -41,10 +48,8 @@ exports.updateRoomType = async (req, res) => {
 };
 
 exports.deleteRoomType = async (req, res) => {
-  //   console.log("hogya update ");
-
-  const { type } = req.body;
-  const filter = { type: type };
+  const { room_type } = req.body;
+  const filter = { room_type: room_type };
 
   RoomType.deleteOne(filter)
     .then(() => {

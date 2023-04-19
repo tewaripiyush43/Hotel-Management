@@ -5,8 +5,10 @@ const {
   createRoomType,
   updateRoomType,
   deleteRoomType,
-} = require("../controllers/RoomType");
+  findRoomType,
+} = require("../controllers/roomType");
 
+router.get("/find", findRoomType);
 router.post("/create", createRoomType);
 router.put("/update", updateRoomType);
 router.delete("/delete", deleteRoomType);

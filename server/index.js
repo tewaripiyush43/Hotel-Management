@@ -8,6 +8,8 @@ const cors = require("cors");
 const { connectMongoDB } = require("./connection");
 
 const roomTypeRouter = require("./routes/roomType");
+const roomRouter = require("./routes/room");
+const bookingRouter = require("./routes/booking");
 
 var app = express();
 
@@ -22,6 +24,8 @@ const DB = process.env.DB;
 connectMongoDB(DB);
 
 app.use("/roomtype", roomTypeRouter);
+app.use("/room", roomRouter);
+app.use("/booking", bookingRouter);
 
 app.listen(PORT, function () {
   console.log("server is connected to port 9000");
